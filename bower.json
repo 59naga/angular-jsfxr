@@ -1,0 +1,26 @@
+{
+  "name": "angular-jsfxr",
+  "main": "public/angular-jsfxr.js",
+  "version": "0.0.0-rc.0",
+
+  "devDependencies": {
+    "jsfxr": "git://github.com/mneubrand/jsfxr.git#b2bfe50fddc7e281e1c1944870071b2ccd2c0440"
+  },
+
+  "authors": [
+    "59naga <i59naga@icloud.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/59naga/angular-jsfxr",
+
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "*.coffee",
+    "package.json",
+    "pkgs.js"
+  ]
+}

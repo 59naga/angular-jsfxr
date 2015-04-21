@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="http://static.edgy.black/misaki_gothic.css">
+  <style>
+    html{
+      background:#333;
+      color:whitesmoke;
+    }
+    html *{
+      font:normal 3vw "misaki_gothic";
+    }
+    [jsfxr]{
+      width:100%;
+      white-space:pre-line;
+      word-break:break-all;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
+  <script src="angular-jsfxr.js"></script>
+  <script>
+  angular.module('jsfxr-example',['jsfxr']).run(function($rootScope){
+    $rootScope.now= function(interval){
+      var unixtime= Math.floor(Date.now()/1000);
+      if(interval!=null){
+        unixtime+= Math.floor(interval);
+      }
+      return unixtime;
+    };
+    $rootScope.chats= [];
+    for(var i=0; i<1; i++){
+      var chat= {
+        body:"ゆっくりしていってね。うわー！あなたは、しんだ。",
+        time:$rootScope.now()-i,
+      }
+      $rootScope.chats.push(chat);
+    }
+
+    $rootScope.submit= function(){
+      var chat= {
+        body:$rootScope.body,
+        time:$rootScope.now(),
+      }
+      $rootScope.chats.unshift(chat);
+
+      delete $rootScope.body
+    }
+  });
+  </script>
+</head>
+<body ng-app="jsfxr-example">
+  <form ng-submit="submit()">
+    <input ng-model="body" placeholder="You said" autofocus>
+  </form>
+  <section ng-repeat="chat in chats">
+    <pre jsfxr="chat.body" jsfxr-disabled="chat.time < now()"></pre>
+  </section>
+</body>
+</html>

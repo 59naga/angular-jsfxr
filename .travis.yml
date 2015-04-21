@@ -1,0 +1,10 @@
+# quick boot options
+sudo: false
+cache:
+  directories:
+    - node_modules
+
+# language options
+language: node_js
+node_js:
+- '0.10'

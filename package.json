@@ -1,0 +1,37 @@
+{
+  "name": "angular-jsfxr-builder",
+  "private": true,
+
+  "scripts": {
+    "start": "abigail  public/*.js:'chrome-cli reload' *.coffee:build --execute --ignore",
+
+    "build": "browserify angular-jsfxr.coffee -t coffeeify -t debowerify --extension .coffee | ng-annotate - --add > public/angular-jsfxr.js",
+    "compress": "uglifyjs public/angular-jsfxr.js --compres --mangle --source-map public/angular-jsfxr.min.js.map --source-map-url angular-jsfxr.min.js.map --output public/angular-jsfxr.min.js --prefix 1",
+
+    "test": "",
+
+    "update": "git tag v$(jqn bower version) && git push --tags"
+  },
+
+  "devDependencies": {
+    "abigail": "0.0.7",
+    "browserify": "^9.0.8",
+    "coffeeify": "^1.0.0",
+    "debowerify": "^1.2.1",
+    "jqn": "0.0.3",
+    "ng-annotate": "^0.15.4",
+    "uglify-js": "^2.4.20"
+  },
+
+  "author": "59naga <i59naga@icloud.com> (http://berabou.me)",
+  "license": "MIT",
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/59naga/angular-jsfxr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/59naga/angular-jsfxr/issues"
+  },
+  "homepage": "https://github.com/59naga/angular-jsfxr"
+}
